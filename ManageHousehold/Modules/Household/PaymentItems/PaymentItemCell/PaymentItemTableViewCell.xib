@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentItemTableViewCell" rowHeight="103" id="KGk-i7-Jjw" customClass="PaymentItemTableViewCell" customModule="ManageHousehold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r2k-eN-TeX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fTZ-v3-eFW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="HAb-Cp-uO1">
+                                        <rect key="frame" x="8" y="19" width="100" height="76"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cUr-pd-HwF">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="36"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhM-hZ-adO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="15"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixL-SG-bAe">
+                                                        <rect key="frame" x="0.0" y="15" width="100" height="21"/>
+                                                        <edgeInsets key="layoutMargins" top="0.0" left="16" bottom="0.0" right="8"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VbM-6U-EUj">
+                                                <rect key="frame" x="0.0" y="40" width="100" height="36"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="項目名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVT-JP-AFJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="15"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="15" id="rsR-pl-bEM"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4T1-hp-m3I">
+                                                        <rect key="frame" x="0.0" y="15" width="100" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="1jS-8S-zXe"/>
+                                                        </constraints>
+                                                        <edgeInsets key="layoutMargins" top="0.0" left="16" bottom="0.0" right="8"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="KVT-JP-AFJ" firstAttribute="height" secondItem="qhM-hZ-adO" secondAttribute="height" id="GJW-5J-wKb"/>
+                                            <constraint firstItem="4T1-hp-m3I" firstAttribute="height" secondItem="ixL-SG-bAe" secondAttribute="height" id="Yg5-E5-uFX"/>
+                                            <constraint firstAttribute="width" constant="100" id="sqN-2X-pfQ"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFp-db-R5x">
+                                        <rect key="frame" x="108" y="74.5" width="196" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="16"/>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsV-Qw-4vv">
+                                <rect key="frame" x="0.0" y="103" width="320" height="0.0"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.25" id="QyQ-JQ-WpT"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="QsV-Qw-4vv" firstAttribute="leading" secondItem="r2k-eN-TeX" secondAttribute="leading" constant="16" id="2Jf-yD-4ps"/>
+                            <constraint firstItem="QsV-Qw-4vv" firstAttribute="leading" secondItem="fTZ-v3-eFW" secondAttribute="leading" id="Ck3-e8-rUF"/>
+                            <constraint firstAttribute="trailing" secondItem="QsV-Qw-4vv" secondAttribute="trailing" id="rV4-Nk-Cle"/>
+                            <constraint firstAttribute="trailing" secondItem="QsV-Qw-4vv" secondAttribute="trailing" id="uC7-cD-Ewv"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="r2k-eN-TeX" secondAttribute="trailing" id="DkT-E9-24O"/>
+                    <constraint firstItem="r2k-eN-TeX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="K56-Ka-rqb"/>
+                    <constraint firstItem="r2k-eN-TeX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hmL-bF-ctq"/>
+                    <constraint firstAttribute="bottom" secondItem="r2k-eN-TeX" secondAttribute="bottom" id="iPh-VP-oM8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="borderView" destination="QsV-Qw-4vv" id="hkg-y2-aDu"/>
+                <outlet property="categoryLabel" destination="ixL-SG-bAe" id="vcg-a1-iSu"/>
+                <outlet property="nameLabel" destination="4T1-hp-m3I" id="sgn-f4-5G3"/>
+                <outlet property="priceLabel" destination="tFp-db-R5x" id="7ag-ZC-ySm"/>
+            </connections>
+            <point key="canvasLocation" x="130.43478260869566" y="182.47767857142856"/>
+        </tableViewCell>
+    </objects>
+</document>

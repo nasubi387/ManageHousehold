@@ -7,13 +7,73 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C12D04F2377F58C0083D828 /* PaymentItemsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C12D04E2377F58C0083D828 /* PaymentItemsViewController.storyboard */; };
+		2C12D0512377F5A00083D828 /* PaymentItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12D0502377F5A00083D828 /* PaymentItemsViewController.swift */; };
+		2C12D0532377F5ED0083D828 /* PaymentItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12D0522377F5ED0083D828 /* PaymentItemsViewModel.swift */; };
+		2C12D055237809400083D828 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12D054237809400083D828 /* PaymentService.swift */; };
+		2C12D057237C1CE80083D828 /* PaymentItemTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12D056237C1CE80083D828 /* PaymentItemTableViewCellViewModel.swift */; };
 		2C5ABEC52338B60A00AAD65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5ABEC42338B60A00AAD65D /* AppDelegate.swift */; };
-		2C5ABEC72338B60A00AAD65D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5ABEC62338B60A00AAD65D /* ViewController.swift */; };
-		2C5ABECA2338B60A00AAD65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C5ABEC82338B60A00AAD65D /* Main.storyboard */; };
 		2C5ABECC2338B60C00AAD65D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C5ABECB2338B60C00AAD65D /* Assets.xcassets */; };
 		2C5ABECF2338B60C00AAD65D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C5ABECD2338B60C00AAD65D /* LaunchScreen.storyboard */; };
 		2C5ABEDA2338B60C00AAD65D /* ManageHouseholdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5ABED92338B60C00AAD65D /* ManageHouseholdTests.swift */; };
 		2C5ABEE52338B60C00AAD65D /* ManageHouseholdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5ABEE42338B60C00AAD65D /* ManageHouseholdUITests.swift */; };
+		2C80AA752372F8B5003950E3 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80AA742372F8B5003950E3 /* CategoryRepository.swift */; };
+		2C80AA772372FEB3003950E3 /* InputPaymentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80AA762372FEB3003950E3 /* InputPaymentTextField.swift */; };
+		2C972424235CA7C500AA94F0 /* UIView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C972423235CA7C500AA94F0 /* UIView+App.swift */; };
+		2C972429235CABF500AA94F0 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C972427235CABF500AA94F0 /* CalenderViewController.swift */; };
+		2C97242C235CACC900AA94F0 /* CalenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C97242B235CACC900AA94F0 /* CalenderViewController.storyboard */; };
+		2C97242E235CAD7700AA94F0 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97242D235CAD7700AA94F0 /* CalenderViewModel.swift */; };
+		2C972430235CAE9500AA94F0 /* Array+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97242F235CAE9500AA94F0 /* Array+App.swift */; };
+		2C972433235EE9FE00AA94F0 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C972432235EE9FE00AA94F0 /* ViewModelType.swift */; };
+		2C97243D235F06B700AA94F0 /* UIPageViewControllerDelegate+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97243C235F06B700AA94F0 /* UIPageViewControllerDelegate+Rx.swift */; };
+		2C97243F23641BEC00AA94F0 /* CalenderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97243E23641BEC00AA94F0 /* CalenderHeaderView.swift */; };
+		2C97244123641CEB00AA94F0 /* CalenderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C97244023641CEB00AA94F0 /* CalenderHeaderView.xib */; };
+		2C9BAA9D2342512E003C9A1D /* HouseholdViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BAA9C2342512E003C9A1D /* HouseholdViewController.storyboard */; };
+		2C9BAA9F2342513C003C9A1D /* HouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BAA9E2342513C003C9A1D /* HouseholdViewController.swift */; };
+		2C9BAAAE23425535003C9A1D /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BAAAA23425535003C9A1D /* RxRelay.framework */; };
+		2C9BAAAF23425535003C9A1D /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BAAAB23425535003C9A1D /* RxBlocking.framework */; };
+		2C9BAAB023425535003C9A1D /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BAAAC23425535003C9A1D /* RxCocoa.framework */; };
+		2C9BAAB123425535003C9A1D /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BAAAD23425535003C9A1D /* RxSwift.framework */; };
+		2C9BAAB323425851003C9A1D /* HouseholdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BAAB223425851003C9A1D /* HouseholdViewModel.swift */; };
+		2C9BAAB62344DD05003C9A1D /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BAAB42344DD05003C9A1D /* CalenderCell.swift */; };
+		2C9BAAB72344DD05003C9A1D /* CalenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BAAB52344DD05003C9A1D /* CalenderCell.xib */; };
+		2C9BAABA2344DEFE003C9A1D /* CalenderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BAAB92344DEFE003C9A1D /* CalenderCellViewModel.swift */; };
+		2C9BAABD2344DFA2003C9A1D /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BAABC2344DFA2003C9A1D /* Payment.swift */; };
+		2C9BAAC02344E3F5003C9A1D /* PaymentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BAABF2344E3F5003C9A1D /* PaymentRepository.swift */; };
+		2C9BAAC32344FCF5003C9A1D /* UICollectionView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BAAC22344FCF5003C9A1D /* UICollectionView+App.swift */; };
+		2C9BAAC52344FD7D003C9A1D /* NSObject+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BAAC42344FD7D003C9A1D /* NSObject+App.swift */; };
+		2CA5737D237C23F500A92A5B /* PaymentItemTableViewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA5737C237C23F500A92A5B /* PaymentItemTableViewSectionModel.swift */; };
+		2CA57380237D7BF300A92A5B /* LineGraphViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CA5737F237D7BF300A92A5B /* LineGraphViewController.storyboard */; };
+		2CA57382237D7BFB00A92A5B /* LineGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA57381237D7BFB00A92A5B /* LineGraphViewController.swift */; };
+		2CA57384237D7C0900A92A5B /* LineGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA57383237D7C0900A92A5B /* LineGraphViewModel.swift */; };
+		2CA57386237D86AC00A92A5B /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA57385237D86AC00A92A5B /* GraphView.swift */; };
+		2CA57388237E8DFA00A92A5B /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA57387237E8DFA00A92A5B /* GraphView.xib */; };
+		2CA5738B237E96E200A92A5B /* GraphXAxisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA57389237E96E200A92A5B /* GraphXAxisCell.swift */; };
+		2CA5738C237E96E200A92A5B /* GraphXAxisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA5738A237E96E200A92A5B /* GraphXAxisCell.xib */; };
+		2CC45C5C236EDE20008CE1F9 /* UITableViewCell+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */; };
+		2CC45C5E236FE46C008CE1F9 /* PaymentItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */; };
+		2CC45C60236FE4E9008CE1F9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */; };
+		2CC45C66237055D8008CE1F9 /* PaymentItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C64237055D8008CE1F9 /* PaymentItemTableViewCell.swift */; };
+		2CC45C67237055D8008CE1F9 /* PaymentItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CC45C65237055D8008CE1F9 /* PaymentItemTableViewCell.xib */; };
+		2CC45C6E23718D95008CE1F9 /* WeekdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C6C23718D95008CE1F9 /* WeekdayCell.swift */; };
+		2CC45C6F23718D95008CE1F9 /* WeekdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CC45C6D23718D95008CE1F9 /* WeekdayCell.xib */; };
+		2CC45C7123718DC5008CE1F9 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C7023718DC5008CE1F9 /* Weekday.swift */; };
+		2CC45C732371A00B008CE1F9 /* UITraitCollection+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C722371A00B008CE1F9 /* UITraitCollection+App.swift */; };
+		2CDC9C0F23656DD100C3E6C5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDC9C0D23656DD100C3E6C5 /* Realm.framework */; };
+		2CDC9C1023656DD100C3E6C5 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDC9C0D23656DD100C3E6C5 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2CDC9C1123656DD100C3E6C5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDC9C0E23656DD100C3E6C5 /* RealmSwift.framework */; };
+		2CDC9C1223656DD100C3E6C5 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDC9C0E23656DD100C3E6C5 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2CDC9C162365746F00C3E6C5 /* InputPaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDC9C152365746F00C3E6C5 /* InputPaymentViewController.storyboard */; };
+		2CDC9C182365747F00C3E6C5 /* InputPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C172365747F00C3E6C5 /* InputPaymentViewController.swift */; };
+		2CDC9C1A2365831A00C3E6C5 /* InputPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C192365831A00C3E6C5 /* InputPaymentViewModel.swift */; };
+		2CDC9C1C236B224800C3E6C5 /* PaymentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C1B236B224800C3E6C5 /* PaymentItem.swift */; };
+		2CDC9C20236D43DC00C3E6C5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C1F236D43DC00C3E6C5 /* Category.swift */; };
+		2CDC9C22236D497D00C3E6C5 /* InputPaymentCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C21236D497D00C3E6C5 /* InputPaymentCellType.swift */; };
+		2CDC9C24236D49D300C3E6C5 /* InputPaymentSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C23236D49D300C3E6C5 /* InputPaymentSectionType.swift */; };
+		2CDC9C27236D53D500C3E6C5 /* InputPaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C25236D53D500C3E6C5 /* InputPaymentCell.swift */; };
+		2CDC9C28236D53D500C3E6C5 /* InputPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CDC9C26236D53D500C3E6C5 /* InputPaymentCell.xib */; };
+		2CDC9C2B236D541500C3E6C5 /* UITableView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C2A236D541500C3E6C5 /* UITableView+App.swift */; };
+		2CDC9C2D236D55DC00C3E6C5 /* InputPaymentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDC9C2C236D55DC00C3E6C5 /* InputPaymentCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,11 +93,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2CDC9C1323656DD100C3E6C5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2CDC9C1223656DD100C3E6C5 /* RealmSwift.framework in Embed Frameworks */,
+				2CDC9C1023656DD100C3E6C5 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2C12D04E2377F58C0083D828 /* PaymentItemsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentItemsViewController.storyboard; sourceTree = "<group>"; };
+		2C12D0502377F5A00083D828 /* PaymentItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemsViewController.swift; sourceTree = "<group>"; };
+		2C12D0522377F5ED0083D828 /* PaymentItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemsViewModel.swift; sourceTree = "<group>"; };
+		2C12D054237809400083D828 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		2C12D056237C1CE80083D828 /* PaymentItemTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		2C5ABEC12338B60A00AAD65D /* ManageHousehold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageHousehold.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5ABEC42338B60A00AAD65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C5ABEC62338B60A00AAD65D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2C5ABEC92338B60A00AAD65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C5ABECB2338B60C00AAD65D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C5ABECE2338B60C00AAD65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C5ABED02338B60C00AAD65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +125,61 @@
 		2C5ABEE02338B60C00AAD65D /* ManageHouseholdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ManageHouseholdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5ABEE42338B60C00AAD65D /* ManageHouseholdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageHouseholdUITests.swift; sourceTree = "<group>"; };
 		2C5ABEE62338B60C00AAD65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C80AA742372F8B5003950E3 /* CategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepository.swift; sourceTree = "<group>"; };
+		2C80AA762372FEB3003950E3 /* InputPaymentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPaymentTextField.swift; sourceTree = "<group>"; };
+		2C972423235CA7C500AA94F0 /* UIView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+App.swift"; sourceTree = "<group>"; };
+		2C972427235CABF500AA94F0 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		2C97242B235CACC900AA94F0 /* CalenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalenderViewController.storyboard; sourceTree = "<group>"; };
+		2C97242D235CAD7700AA94F0 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
+		2C97242F235CAE9500AA94F0 /* Array+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+App.swift"; sourceTree = "<group>"; };
+		2C972432235EE9FE00AA94F0 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		2C97243C235F06B700AA94F0 /* UIPageViewControllerDelegate+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewControllerDelegate+Rx.swift"; sourceTree = "<group>"; };
+		2C97243E23641BEC00AA94F0 /* CalenderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHeaderView.swift; sourceTree = "<group>"; };
+		2C97244023641CEB00AA94F0 /* CalenderHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalenderHeaderView.xib; sourceTree = "<group>"; };
+		2C9BAA9C2342512E003C9A1D /* HouseholdViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HouseholdViewController.storyboard; sourceTree = "<group>"; };
+		2C9BAA9E2342513C003C9A1D /* HouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdViewController.swift; sourceTree = "<group>"; };
+		2C9BAAAA23425535003C9A1D /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		2C9BAAAB23425535003C9A1D /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		2C9BAAAC23425535003C9A1D /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		2C9BAAAD23425535003C9A1D /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		2C9BAAB223425851003C9A1D /* HouseholdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdViewModel.swift; sourceTree = "<group>"; };
+		2C9BAAB42344DD05003C9A1D /* CalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
+		2C9BAAB52344DD05003C9A1D /* CalenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalenderCell.xib; sourceTree = "<group>"; };
+		2C9BAAB92344DEFE003C9A1D /* CalenderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCellViewModel.swift; sourceTree = "<group>"; };
+		2C9BAABC2344DFA2003C9A1D /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		2C9BAABF2344E3F5003C9A1D /* PaymentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRepository.swift; sourceTree = "<group>"; };
+		2C9BAAC22344FCF5003C9A1D /* UICollectionView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+App.swift"; sourceTree = "<group>"; };
+		2C9BAAC42344FD7D003C9A1D /* NSObject+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+App.swift"; sourceTree = "<group>"; };
+		2CA5737C237C23F500A92A5B /* PaymentItemTableViewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemTableViewSectionModel.swift; sourceTree = "<group>"; };
+		2CA5737F237D7BF300A92A5B /* LineGraphViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LineGraphViewController.storyboard; sourceTree = "<group>"; };
+		2CA57381237D7BFB00A92A5B /* LineGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphViewController.swift; sourceTree = "<group>"; };
+		2CA57383237D7C0900A92A5B /* LineGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphViewModel.swift; sourceTree = "<group>"; };
+		2CA57385237D86AC00A92A5B /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		2CA57387237E8DFA00A92A5B /* GraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
+		2CA57389237E96E200A92A5B /* GraphXAxisCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphXAxisCell.swift; sourceTree = "<group>"; };
+		2CA5738A237E96E200A92A5B /* GraphXAxisCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphXAxisCell.xib; sourceTree = "<group>"; };
+		2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+App.swift"; sourceTree = "<group>"; };
+		2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemRepository.swift; sourceTree = "<group>"; };
+		2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		2CC45C64237055D8008CE1F9 /* PaymentItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemTableViewCell.swift; sourceTree = "<group>"; };
+		2CC45C65237055D8008CE1F9 /* PaymentItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentItemTableViewCell.xib; sourceTree = "<group>"; };
+		2CC45C6C23718D95008CE1F9 /* WeekdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayCell.swift; sourceTree = "<group>"; };
+		2CC45C6D23718D95008CE1F9 /* WeekdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekdayCell.xib; sourceTree = "<group>"; };
+		2CC45C7023718DC5008CE1F9 /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		2CC45C722371A00B008CE1F9 /* UITraitCollection+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+App.swift"; sourceTree = "<group>"; };
+		2CDC9C0D23656DD100C3E6C5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		2CDC9C0E23656DD100C3E6C5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		2CDC9C152365746F00C3E6C5 /* InputPaymentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputPaymentViewController.storyboard; sourceTree = "<group>"; };
+		2CDC9C172365747F00C3E6C5 /* InputPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPaymentViewController.swift; sourceTree = "<group>"; };
+		2CDC9C192365831A00C3E6C5 /* InputPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPaymentViewModel.swift; sourceTree = "<group>"; };
+		2CDC9C1B236B224800C3E6C5 /* PaymentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItem.swift; sourceTree = "<group>"; };
+		2CDC9C1F236D43DC00C3E6C5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		2CDC9C21236D497D00C3E6C5 /* InputPaymentCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPaymentCellType.swift; sourceTree = "<group>"; };
+		2CDC9C23236D49D300C3E6C5 /* InputPaymentSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPaymentSectionType.swift; sourceTree = "<group>"; };
+		2CDC9C25236D53D500C3E6C5 /* InputPaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPaymentCell.swift; sourceTree = "<group>"; };
+		2CDC9C26236D53D500C3E6C5 /* InputPaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPaymentCell.xib; sourceTree = "<group>"; };
+		2CDC9C2A236D541500C3E6C5 /* UITableView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+App.swift"; sourceTree = "<group>"; };
+		2CDC9C2C236D55DC00C3E6C5 /* InputPaymentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPaymentCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +187,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C9BAAAE23425535003C9A1D /* RxRelay.framework in Frameworks */,
+				2C9BAAAF23425535003C9A1D /* RxBlocking.framework in Frameworks */,
+				2CDC9C1123656DD100C3E6C5 /* RealmSwift.framework in Frameworks */,
+				2C9BAAB023425535003C9A1D /* RxCocoa.framework in Frameworks */,
+				2C9BAAB123425535003C9A1D /* RxSwift.framework in Frameworks */,
+				2CDC9C0F23656DD100C3E6C5 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +213,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C12D04D2377F5660083D828 /* PaymentItems */ = {
+			isa = PBXGroup;
+			children = (
+				2C12D04E2377F58C0083D828 /* PaymentItemsViewController.storyboard */,
+				2C12D0502377F5A00083D828 /* PaymentItemsViewController.swift */,
+				2C12D0522377F5ED0083D828 /* PaymentItemsViewModel.swift */,
+				2CC45C63237055B5008CE1F9 /* PaymentItemCell */,
+			);
+			path = PaymentItems;
+			sourceTree = "<group>";
+		};
 		2C5ABEB82338B60A00AAD65D = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +231,7 @@
 				2C5ABED82338B60C00AAD65D /* ManageHouseholdTests */,
 				2C5ABEE32338B60C00AAD65D /* ManageHouseholdUITests */,
 				2C5ABEC22338B60A00AAD65D /* Products */,
+				2C9BAAA923425535003C9A1D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,9 +248,12 @@
 		2C5ABEC32338B60A00AAD65D /* ManageHousehold */ = {
 			isa = PBXGroup;
 			children = (
-				2C5ABEC42338B60A00AAD65D /* AppDelegate.swift */,
-				2C5ABEC62338B60A00AAD65D /* ViewController.swift */,
-				2C5ABEC82338B60A00AAD65D /* Main.storyboard */,
+				2C972431235EE9E500AA94F0 /* Common */,
+				2C9BAAC12344FCCB003C9A1D /* Extension */,
+				2C9BAABE2344E3DC003C9A1D /* Repository */,
+				2C9BAABB2344DF82003C9A1D /* Entity */,
+				2C9BAA9A23424F6E003C9A1D /* AppDelegate */,
+				2C9BAA9823424BCB003C9A1D /* Modules */,
 				2C5ABECB2338B60C00AAD65D /* Assets.xcassets */,
 				2C5ABECD2338B60C00AAD65D /* LaunchScreen.storyboard */,
 				2C5ABED02338B60C00AAD65D /* Info.plist */,
@@ -125,6 +279,169 @@
 			path = ManageHouseholdUITests;
 			sourceTree = "<group>";
 		};
+		2C972425235CABC500AA94F0 /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BAAB82344DEE6003C9A1D /* CalenderCell */,
+				2C972427235CABF500AA94F0 /* CalenderViewController.swift */,
+				2C97242B235CACC900AA94F0 /* CalenderViewController.storyboard */,
+				2C97242D235CAD7700AA94F0 /* CalenderViewModel.swift */,
+			);
+			path = Calender;
+			sourceTree = "<group>";
+		};
+		2C972431235EE9E500AA94F0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2C972432235EE9FE00AA94F0 /* ViewModelType.swift */,
+				2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2C9BAA9823424BCB003C9A1D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2CDC9C142365742000C3E6C5 /* InputPayment */,
+				2C9BAA9B23425115003C9A1D /* Household */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		2C9BAA9A23424F6E003C9A1D /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2C5ABEC42338B60A00AAD65D /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		2C9BAA9B23425115003C9A1D /* Household */ = {
+			isa = PBXGroup;
+			children = (
+				2CA5737E237D7BCD00A92A5B /* LineGraph */,
+				2C12D04D2377F5660083D828 /* PaymentItems */,
+				2C972425235CABC500AA94F0 /* Calender */,
+				2C9BAA9C2342512E003C9A1D /* HouseholdViewController.storyboard */,
+				2C9BAA9E2342513C003C9A1D /* HouseholdViewController.swift */,
+				2C9BAAB223425851003C9A1D /* HouseholdViewModel.swift */,
+				2C97243E23641BEC00AA94F0 /* CalenderHeaderView.swift */,
+				2C97244023641CEB00AA94F0 /* CalenderHeaderView.xib */,
+				2C12D054237809400083D828 /* PaymentService.swift */,
+			);
+			path = Household;
+			sourceTree = "<group>";
+		};
+		2C9BAAA923425535003C9A1D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CDC9C0D23656DD100C3E6C5 /* Realm.framework */,
+				2CDC9C0E23656DD100C3E6C5 /* RealmSwift.framework */,
+				2C9BAAAB23425535003C9A1D /* RxBlocking.framework */,
+				2C9BAAAC23425535003C9A1D /* RxCocoa.framework */,
+				2C9BAAAA23425535003C9A1D /* RxRelay.framework */,
+				2C9BAAAD23425535003C9A1D /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C9BAAB82344DEE6003C9A1D /* CalenderCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BAAB42344DD05003C9A1D /* CalenderCell.swift */,
+				2C9BAAB52344DD05003C9A1D /* CalenderCell.xib */,
+				2C9BAAB92344DEFE003C9A1D /* CalenderCellViewModel.swift */,
+				2CC45C6C23718D95008CE1F9 /* WeekdayCell.swift */,
+				2CC45C6D23718D95008CE1F9 /* WeekdayCell.xib */,
+				2CC45C7023718DC5008CE1F9 /* Weekday.swift */,
+			);
+			path = CalenderCell;
+			sourceTree = "<group>";
+		};
+		2C9BAABB2344DF82003C9A1D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BAABC2344DFA2003C9A1D /* Payment.swift */,
+				2CDC9C1B236B224800C3E6C5 /* PaymentItem.swift */,
+				2CDC9C1F236D43DC00C3E6C5 /* Category.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		2C9BAABE2344E3DC003C9A1D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BAABF2344E3F5003C9A1D /* PaymentRepository.swift */,
+				2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */,
+				2C80AA742372F8B5003950E3 /* CategoryRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		2C9BAAC12344FCCB003C9A1D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BAAC22344FCF5003C9A1D /* UICollectionView+App.swift */,
+				2CDC9C2A236D541500C3E6C5 /* UITableView+App.swift */,
+				2C9BAAC42344FD7D003C9A1D /* NSObject+App.swift */,
+				2C972423235CA7C500AA94F0 /* UIView+App.swift */,
+				2C97242F235CAE9500AA94F0 /* Array+App.swift */,
+				2C97243C235F06B700AA94F0 /* UIPageViewControllerDelegate+Rx.swift */,
+				2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */,
+				2CC45C722371A00B008CE1F9 /* UITraitCollection+App.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2CA5737E237D7BCD00A92A5B /* LineGraph */ = {
+			isa = PBXGroup;
+			children = (
+				2CA5737F237D7BF300A92A5B /* LineGraphViewController.storyboard */,
+				2CA57381237D7BFB00A92A5B /* LineGraphViewController.swift */,
+				2CA57383237D7C0900A92A5B /* LineGraphViewModel.swift */,
+				2CA57385237D86AC00A92A5B /* GraphView.swift */,
+				2CA57387237E8DFA00A92A5B /* GraphView.xib */,
+				2CA57389237E96E200A92A5B /* GraphXAxisCell.swift */,
+				2CA5738A237E96E200A92A5B /* GraphXAxisCell.xib */,
+			);
+			path = LineGraph;
+			sourceTree = "<group>";
+		};
+		2CC45C63237055B5008CE1F9 /* PaymentItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CC45C64237055D8008CE1F9 /* PaymentItemTableViewCell.swift */,
+				2CC45C65237055D8008CE1F9 /* PaymentItemTableViewCell.xib */,
+				2C12D056237C1CE80083D828 /* PaymentItemTableViewCellViewModel.swift */,
+				2CA5737C237C23F500A92A5B /* PaymentItemTableViewSectionModel.swift */,
+			);
+			path = PaymentItemCell;
+			sourceTree = "<group>";
+		};
+		2CDC9C142365742000C3E6C5 /* InputPayment */ = {
+			isa = PBXGroup;
+			children = (
+				2CDC9C29236D53DE00C3E6C5 /* InputPaymentCell */,
+				2CDC9C152365746F00C3E6C5 /* InputPaymentViewController.storyboard */,
+				2CDC9C172365747F00C3E6C5 /* InputPaymentViewController.swift */,
+				2CDC9C192365831A00C3E6C5 /* InputPaymentViewModel.swift */,
+			);
+			path = InputPayment;
+			sourceTree = "<group>";
+		};
+		2CDC9C29236D53DE00C3E6C5 /* InputPaymentCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CDC9C25236D53D500C3E6C5 /* InputPaymentCell.swift */,
+				2CDC9C26236D53D500C3E6C5 /* InputPaymentCell.xib */,
+				2CDC9C2C236D55DC00C3E6C5 /* InputPaymentCellViewModel.swift */,
+				2CDC9C21236D497D00C3E6C5 /* InputPaymentCellType.swift */,
+				2CDC9C23236D49D300C3E6C5 /* InputPaymentSectionType.swift */,
+				2C80AA762372FEB3003950E3 /* InputPaymentTextField.swift */,
+			);
+			path = InputPaymentCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +452,8 @@
 				2C5ABEBD2338B60A00AAD65D /* Sources */,
 				2C5ABEBE2338B60A00AAD65D /* Frameworks */,
 				2C5ABEBF2338B60A00AAD65D /* Resources */,
+				2C9BAAA823425492003C9A1D /* Carthage */,
+				2CDC9C1323656DD100C3E6C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,8 +549,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C5ABECF2338B60C00AAD65D /* LaunchScreen.storyboard in Resources */,
+				2C97244123641CEB00AA94F0 /* CalenderHeaderView.xib in Resources */,
+				2CA57380237D7BF300A92A5B /* LineGraphViewController.storyboard in Resources */,
+				2C9BAAB72344DD05003C9A1D /* CalenderCell.xib in Resources */,
+				2CDC9C28236D53D500C3E6C5 /* InputPaymentCell.xib in Resources */,
 				2C5ABECC2338B60C00AAD65D /* Assets.xcassets in Resources */,
-				2C5ABECA2338B60A00AAD65D /* Main.storyboard in Resources */,
+				2CC45C6F23718D95008CE1F9 /* WeekdayCell.xib in Resources */,
+				2CC45C67237055D8008CE1F9 /* PaymentItemTableViewCell.xib in Resources */,
+				2CA57388237E8DFA00A92A5B /* GraphView.xib in Resources */,
+				2C9BAA9D2342512E003C9A1D /* HouseholdViewController.storyboard in Resources */,
+				2CDC9C162365746F00C3E6C5 /* InputPaymentViewController.storyboard in Resources */,
+				2C12D04F2377F58C0083D828 /* PaymentItemsViewController.storyboard in Resources */,
+				2CA5738C237E96E200A92A5B /* GraphXAxisCell.xib in Resources */,
+				2C97242C235CACC900AA94F0 /* CalenderViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +581,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2C9BAAA823425492003C9A1D /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxOptional.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2C5ABEBD2338B60A00AAD65D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C5ABEC72338B60A00AAD65D /* ViewController.swift in Sources */,
+				2C12D055237809400083D828 /* PaymentService.swift in Sources */,
+				2C97243D235F06B700AA94F0 /* UIPageViewControllerDelegate+Rx.swift in Sources */,
+				2C9BAAC32344FCF5003C9A1D /* UICollectionView+App.swift in Sources */,
+				2C9BAABA2344DEFE003C9A1D /* CalenderCellViewModel.swift in Sources */,
+				2CDC9C1C236B224800C3E6C5 /* PaymentItem.swift in Sources */,
+				2CDC9C2D236D55DC00C3E6C5 /* InputPaymentCellViewModel.swift in Sources */,
+				2C9BAAC02344E3F5003C9A1D /* PaymentRepository.swift in Sources */,
+				2C972429235CABF500AA94F0 /* CalenderViewController.swift in Sources */,
+				2CA5738B237E96E200A92A5B /* GraphXAxisCell.swift in Sources */,
+				2C972430235CAE9500AA94F0 /* Array+App.swift in Sources */,
+				2CC45C66237055D8008CE1F9 /* PaymentItemTableViewCell.swift in Sources */,
 				2C5ABEC52338B60A00AAD65D /* AppDelegate.swift in Sources */,
+				2CDC9C1A2365831A00C3E6C5 /* InputPaymentViewModel.swift in Sources */,
+				2C97243F23641BEC00AA94F0 /* CalenderHeaderView.swift in Sources */,
+				2CDC9C24236D49D300C3E6C5 /* InputPaymentSectionType.swift in Sources */,
+				2C9BAAB323425851003C9A1D /* HouseholdViewModel.swift in Sources */,
+				2C9BAAB62344DD05003C9A1D /* CalenderCell.swift in Sources */,
+				2C12D0512377F5A00083D828 /* PaymentItemsViewController.swift in Sources */,
+				2CC45C6E23718D95008CE1F9 /* WeekdayCell.swift in Sources */,
+				2C12D057237C1CE80083D828 /* PaymentItemTableViewCellViewModel.swift in Sources */,
+				2C97242E235CAD7700AA94F0 /* CalenderViewModel.swift in Sources */,
+				2CC45C5C236EDE20008CE1F9 /* UITableViewCell+App.swift in Sources */,
+				2CC45C5E236FE46C008CE1F9 /* PaymentItemRepository.swift in Sources */,
+				2C972433235EE9FE00AA94F0 /* ViewModelType.swift in Sources */,
+				2CA57386237D86AC00A92A5B /* GraphView.swift in Sources */,
+				2CDC9C2B236D541500C3E6C5 /* UITableView+App.swift in Sources */,
+				2CDC9C22236D497D00C3E6C5 /* InputPaymentCellType.swift in Sources */,
+				2CA57382237D7BFB00A92A5B /* LineGraphViewController.swift in Sources */,
+				2C80AA772372FEB3003950E3 /* InputPaymentTextField.swift in Sources */,
+				2CA5737D237C23F500A92A5B /* PaymentItemTableViewSectionModel.swift in Sources */,
+				2C9BAA9F2342513C003C9A1D /* HouseholdViewController.swift in Sources */,
+				2C972424235CA7C500AA94F0 /* UIView+App.swift in Sources */,
+				2CDC9C182365747F00C3E6C5 /* InputPaymentViewController.swift in Sources */,
+				2CC45C60236FE4E9008CE1F9 /* RealmManager.swift in Sources */,
+				2CA57384237D7C0900A92A5B /* LineGraphViewModel.swift in Sources */,
+				2C9BAAC52344FD7D003C9A1D /* NSObject+App.swift in Sources */,
+				2C9BAABD2344DFA2003C9A1D /* Payment.swift in Sources */,
+				2CC45C7123718DC5008CE1F9 /* Weekday.swift in Sources */,
+				2CDC9C27236D53D500C3E6C5 /* InputPaymentCell.swift in Sources */,
+				2CC45C732371A00B008CE1F9 /* UITraitCollection+App.swift in Sources */,
+				2C80AA752372F8B5003950E3 /* CategoryRepository.swift in Sources */,
+				2C12D0532377F5ED0083D828 /* PaymentItemsViewModel.swift in Sources */,
+				2CDC9C20236D43DC00C3E6C5 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +692,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2C5ABEC82338B60A00AAD65D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2C5ABEC92338B60A00AAD65D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2C5ABECD2338B60C00AAD65D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -434,6 +825,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67L53468FC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ManageHousehold/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,6 +847,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67L53468FC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ManageHousehold/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

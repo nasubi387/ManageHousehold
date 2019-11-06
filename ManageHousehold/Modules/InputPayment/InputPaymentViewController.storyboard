@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xQV-vw-Fbi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Input Payment View Controller-->
+        <scene sceneID="qQb-bc-Gwo">
+            <objects>
+                <viewController id="kn4-SI-8Kl" customClass="InputPaymentViewController" customModule="ManageHousehold" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Huk-NH-eiM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="h9J-if-7WV">
+                                <rect key="frame" x="32" y="104" width="350" height="32"/>
+                                <segments>
+                                    <segment title="支出"/>
+                                    <segment title="収入"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="abk-OB-OXn">
+                                <rect key="frame" x="0.0" y="167" width="414" height="729"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="e9n-Pi-bru">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="保存する">
+                                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="0.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="abk-OB-OXn" firstAttribute="top" secondItem="h9J-if-7WV" secondAttribute="bottom" constant="32" id="3BR-1k-abz"/>
+                            <constraint firstItem="h9J-if-7WV" firstAttribute="top" secondItem="C2U-pp-2Gq" secondAttribute="top" constant="16" id="7M0-Cm-XTg"/>
+                            <constraint firstAttribute="bottom" secondItem="abk-OB-OXn" secondAttribute="bottom" id="DDT-jt-n0Y"/>
+                            <constraint firstItem="h9J-if-7WV" firstAttribute="leading" secondItem="C2U-pp-2Gq" secondAttribute="leading" constant="32" id="IAA-Ga-Tob"/>
+                            <constraint firstItem="C2U-pp-2Gq" firstAttribute="trailing" secondItem="h9J-if-7WV" secondAttribute="trailing" constant="32" id="OfL-tP-gCn"/>
+                            <constraint firstItem="C2U-pp-2Gq" firstAttribute="trailing" secondItem="abk-OB-OXn" secondAttribute="trailing" id="Psc-bN-enP"/>
+                            <constraint firstItem="abk-OB-OXn" firstAttribute="leading" secondItem="C2U-pp-2Gq" secondAttribute="leading" id="Shg-jo-NUN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="C2U-pp-2Gq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ger-Rf-3Gg"/>
+                    <connections>
+                        <outlet property="paymentSegmentControl" destination="h9J-if-7WV" id="zhT-JJ-7OS"/>
+                        <outlet property="saveButton" destination="e9n-Pi-bru" id="drw-XQ-FCp"/>
+                        <outlet property="tableView" destination="abk-OB-OXn" id="OJN-fx-EoF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Edi-Mj-knK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1037.68115942029" y="86.383928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5UD-NN-d6d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xQV-vw-Fbi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="beg-6D-deU">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kn4-SI-8Kl" kind="relationship" relationship="rootViewController" id="ubt-Mk-Ez3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OE9-RZ-8Sh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="127.53623188405798" y="86.383928571428569"/>
+        </scene>
+    </scenes>
+</document>
