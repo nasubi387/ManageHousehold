@@ -50,6 +50,7 @@
 		2CA57388237E8DFA00A92A5B /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA57387237E8DFA00A92A5B /* GraphView.xib */; };
 		2CA5738B237E96E200A92A5B /* GraphXAxisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA57389237E96E200A92A5B /* GraphXAxisCell.swift */; };
 		2CA5738C237E96E200A92A5B /* GraphXAxisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA5738A237E96E200A92A5B /* GraphXAxisCell.xib */; };
+		2CA5738E238147F000A92A5B /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA5738D238147F000A92A5B /* UIViewController+Rx.swift */; };
 		2CC45C5C236EDE20008CE1F9 /* UITableViewCell+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */; };
 		2CC45C5E236FE46C008CE1F9 /* PaymentItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */; };
 		2CC45C60236FE4E9008CE1F9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */; };
@@ -158,6 +159,7 @@
 		2CA57387237E8DFA00A92A5B /* GraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
 		2CA57389237E96E200A92A5B /* GraphXAxisCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphXAxisCell.swift; sourceTree = "<group>"; };
 		2CA5738A237E96E200A92A5B /* GraphXAxisCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphXAxisCell.xib; sourceTree = "<group>"; };
+		2CA5738D238147F000A92A5B /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+App.swift"; sourceTree = "<group>"; };
 		2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemRepository.swift; sourceTree = "<group>"; };
 		2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				2C97243C235F06B700AA94F0 /* UIPageViewControllerDelegate+Rx.swift */,
 				2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */,
 				2CC45C722371A00B008CE1F9 /* UITraitCollection+App.swift */,
+				2CA5738D238147F000A92A5B /* UIViewController+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				2CC45C732371A00B008CE1F9 /* UITraitCollection+App.swift in Sources */,
 				2C80AA752372F8B5003950E3 /* CategoryRepository.swift in Sources */,
 				2C12D0532377F5ED0083D828 /* PaymentItemsViewModel.swift in Sources */,
+				2CA5738E238147F000A92A5B /* UIViewController+Rx.swift in Sources */,
 				2CDC9C20236D43DC00C3E6C5 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

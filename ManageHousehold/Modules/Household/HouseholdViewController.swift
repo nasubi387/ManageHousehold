@@ -10,6 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol HouseholdFireframe {
+    func presentInputPaymentView(with paymentItem: PaymentItem)
+}
+
 class HouseholdViewController: UIViewController {
     var viewModel: HouseholdViewModel!
     let disposeBag = DisposeBag()
@@ -28,18 +32,6 @@ class HouseholdViewController: UIViewController {
         return children.last as! UIPageViewController
     }
     
-    lazy var paymentItemViewControllers: [UIViewController] = {
-        let paymentItems = UIStoryboard(name: PaymentItemsViewController.className, bundle: nil).instantiateInitialViewController() as! PaymentItemsViewController
-        _ = paymentItems.view
-        paymentItems.bind(self.viewModel.currentStatus.paymentItemsViewModel)
-        
-        let lineGraph = UIStoryboard(name: LineGraphViewController.className, bundle: nil).instantiateInitialViewController() as! LineGraphViewController
-        _ = lineGraph.view
-        lineGraph.bind(self.viewModel.currentStatus.lineGraphViewModel)
-        
-        return [paymentItems, lineGraph]
-    }()
-    
     var headerView: CalenderHeaderView!
     
     override func viewDidLoad() {
@@ -49,7 +41,7 @@ class HouseholdViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.fetchPayments()
+        
     }
 }
 
@@ -67,14 +59,10 @@ extension HouseholdViewController {
         headerView = CalenderHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         navigationItem.titleView = headerView
         
-        let cuerrentDate = Date()
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: cuerrentDate)
-        let month = calendar.component(.month, from: cuerrentDate)
+        let year = Calendar.current.component(.year, from: Date())
+        let month = Calendar.current.component(.month, from: Date())
         
-        let paymentService = PaymentService(year: year, month: month)
-        let viewModel = HouseholdViewModel(paymentService: paymentService)
-        bind(viewModel)
+        bind(year: year, month: month)
         
         guard let view = getCalenderViewController(year: year, month: month) else {
             return
@@ -82,65 +70,46 @@ extension HouseholdViewController {
         viewModel.update(view.viewModel)
         pageView.dataSource = self
         pageView.setViewControllers([view], direction: .forward, animated: false)
-        paymentItemPageView.setViewControllers([paymentItemViewControllers[0]], direction: .forward, animated: false)
     }
     
-    func bind(_ viewModel: HouseholdViewModel) {
+    func bind(year: Int, month: Int) {
+        let paymentService = PaymentService(year: year, month: month)
+        
+        let input = HouseholdViewModel.Input(viewDidAppear: self.rx.viewDidAppear,
+                                             didChangePageView: pageView.rx.didChangePage,
+                                             didChangeItemPageView: paymentItemPageView.rx.didChangePage,
+                                             didTapAddButton: addButton.rx.tap.asSignal(),
+                                             didChangePaymentItemSegmentControlValue: paymentItemSegmentControl.rx.value)
+        
+        let dependency = HouseholdViewModel.Dependency(wireframe: self,
+                                                       paymentService: BehaviorRelay<PaymentService>(value: paymentService))
+        
+        let viewModel = HouseholdViewModel(input:input, dependency: dependency)
+        
         self.viewModel = viewModel
         
-        pageView.rx.didChangePage
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] nextView in
-                guard let viewModel = (nextView as? CalenderViewController)?.viewModel else { return }
-                self?.viewModel.update(viewModel)
-            })
-            .disposed(by: disposeBag)
-        
-        paymentItemPageView.rx.didChangePage
-            .distinctUntilChanged()
-            .map { [weak self] in
-                self?.paymentItemViewControllers.firstIndex(of: $0)
-            }
-            .filterNil()
-            .bind(to: paymentItemSegmentControl.rx.value)
-            .disposed(by: disposeBag)
-        
-        addButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                let paymentItem = PaymentItem(date: Date())
-                self?.presentInputPaymentView(with: paymentItem)
-            })
-            .disposed(by: disposeBag)
-        
-        paymentItemSegmentControl.rx.value.asDriver()
-            .skip(1)
-            .drive(onNext: { [weak self] destIndex in
-                guard
-                    let currentView = self?.paymentItemPageView.viewControllers?.first,
-                    let currentIndex = self?.paymentItemViewControllers.firstIndex(of: currentView),
-                    let destView = self?.paymentItemViewControllers[safe: destIndex] else {
-                        return
-                }
-                self?.paymentItemPageView.setViewControllers([destView],
-                                                             direction: currentIndex < destIndex ? .forward : .reverse,
-                                                             animated: true)
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.incomeText
+        viewModel.output.incomeText
             .bind(to: incomeLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.expenseText
+        viewModel.output.expenseText
             .bind(to: expenseLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.totalText
+        viewModel.output.totalText
             .bind(to: totalLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.calenderTitleText
+        viewModel.output.calenderTitleText
             .bind(to: headerView.CalenderLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.paymentItemPageViewController
+            .bind { [weak self] (view, derection) in
+                self?.paymentItemPageView.setViewControllers([view],
+                                                             direction: derection,
+                                                             animated: true)
+            }
             .disposed(by: disposeBag)
     }
 }
@@ -171,15 +140,10 @@ extension HouseholdViewController {
             .disposed(by: view.disposeBag)
         return view
     }
-    
-    private func getPaymentItemPageViewController(current: UIViewController, diff: Int) -> UIViewController? {
-        guard let currentIndex = paymentItemViewControllers.firstIndex(of: current) else {
-            return nil
-        }
-        return paymentItemViewControllers[safe: currentIndex + diff]
-    }
-    
-    private func presentInputPaymentView(with paymentItem: PaymentItem) {
+}
+
+extension HouseholdViewController: HouseholdFireframe {
+    func presentInputPaymentView(with paymentItem: PaymentItem) {
         guard let navigationController = UIStoryboard(name: InputPaymentViewController.className, bundle: nil).instantiateInitialViewController() as? UINavigationController,
             let view = navigationController.viewControllers.first as? InputPaymentViewController else {
             return
@@ -193,14 +157,14 @@ extension HouseholdViewController {
 extension HouseholdViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard pageViewController == pageView else {
-            return getPaymentItemPageViewController(current: viewController, diff: -1)
+            return nil
         }
         return getCalenderViewController(year: viewModel.currentStatus.year, month: viewModel.currentStatus.month - 1)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard pageViewController == pageView else {
-            return getPaymentItemPageViewController(current: viewController, diff: 1)
+            return nil
         }
         return getCalenderViewController(year: viewModel.currentStatus.year, month: viewModel.currentStatus.month + 1)
     }
