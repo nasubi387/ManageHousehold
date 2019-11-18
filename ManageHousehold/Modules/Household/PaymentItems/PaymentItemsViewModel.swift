@@ -12,7 +12,7 @@ import RxCocoa
 
 class PaymentItemsViewModel {
     struct Dependency {
-        let wireframe: PaymentItemsWireFrame
+        let wireframe: PaymentItemsWireframe
         let paymentService: BehaviorRelay<PaymentService>
     }
     

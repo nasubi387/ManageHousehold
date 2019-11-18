@@ -10,31 +10,49 @@ import RxSwift
 import RxCocoa
 
 class LineGraphViewModel {
-    private let disposeBag = DisposeBag()
+    struct Dependency {
+        let wireframe: LineGraphWireframe
+        let paymentService: BehaviorRelay<PaymentService>
+    }
     
-    private let _paymentService: BehaviorRelay<PaymentService>
-    var payments: Observable<[Payment]>!
+    struct Input {
+    }
+    
+    struct Output {
+        let payments: Observable<[Payment]>
+    }
+    
+    private let dependency: Dependency
+    private let input: Input
+    let output: Output
+    
+    private let disposeBag = DisposeBag()
     
     struct State {
         let paymentService: PaymentService
         let payments: [Payment]
     }
     var currentStatus: State {
-        return State(paymentService: _paymentService.value,
-                     payments: _paymentService.value.currentState.payments)
+        return State(paymentService: dependency.paymentService.value,
+                     payments: dependency.paymentService.value.currentState.payments)
     }
     
-    init(paymentService: BehaviorRelay<PaymentService>) {
-        _paymentService = paymentService
-        payments = _paymentService
+    init(input: Input, dependency: Dependency) {
+        self.dependency = dependency
+        self.input = input
+        
+        let payments = dependency.paymentService
             .flatMap { $0.payments }
-            .map { [weak self] in
-                return $0.filter { [weak self] in
-                    let year = self?.currentStatus.paymentService.currentState.year
-                    let month = self?.currentStatus.paymentService.currentState.month
+            .map {
+                $0.filter {
+                    let year = dependency.paymentService.value.currentState.year
+                    let month = dependency.paymentService.value.currentState.month
                     return Calendar.current.component(.year, from: $0.date) == year
                         && Calendar.current.component(.month, from: $0.date) == month
                 }
             }
+        
+        let output = Output(payments: payments)
+        self.output = output
     }
 }

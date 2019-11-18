@@ -25,7 +25,7 @@ extension LineGraphViewController {
     func bind(_ viewModel: LineGraphViewModel) {
         self.viewModel = viewModel
         
-        viewModel.payments
+        viewModel.output.payments
             .bind { [weak self] in
                 self?.graphView.update(with: $0)
             }

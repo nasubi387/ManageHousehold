@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol CalenderFireframe {
+protocol CalenderWireframe {
     
 }
 
@@ -49,7 +49,7 @@ extension CalenderViewController {
     }
 }
 
-extension CalenderViewController: CalenderFireframe {
+extension CalenderViewController: CalenderWireframe {
     
 }
 

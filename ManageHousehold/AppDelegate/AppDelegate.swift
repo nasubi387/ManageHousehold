@@ -14,6 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        guard let householdView = HouseholdWireframe.assembleModules() else {
+            return false
+        }
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = householdView
+        window?.makeKeyAndVisible()
         return true
     }
 

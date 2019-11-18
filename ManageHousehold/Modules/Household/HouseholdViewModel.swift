@@ -12,8 +12,9 @@ import UIKit
 
 class HouseholdViewModel: NSObject {
     struct Dependency {
-        let wireframe: HouseholdFireframe
+        let wireframe: HouseholdWireframe
         let paymentService: BehaviorRelay<PaymentService>
+        let paymentItemViewControllers: [UIViewController]
     }
     
     struct Input {
@@ -22,7 +23,7 @@ class HouseholdViewModel: NSObject {
         let didChangeItemPageView: Observable<UIViewController>
         let didTapAddButton: Signal<Void>
         let didChangePaymentItemSegmentControlValue: ControlProperty<Int>
-        var paymentItemDeleted: ControlEvent<IndexPath>!
+        var paymentItemDeleted: ControlEvent<IndexPath>
     }
     
     struct Output {
@@ -59,8 +60,6 @@ class HouseholdViewModel: NSObject {
                      paymentService: dependency.paymentService.value)
     }
     
-    let paymentItemViewControllers: [UIViewController]
-    
     init(input: Input, dependency: Dependency) {
         self.dependency = dependency
         self.input = input
@@ -91,31 +90,12 @@ class HouseholdViewModel: NSObject {
             .map { String($0.reduce(0) { $0 + $1.total }) }
             .distinctUntilChanged()
         
-        let paymentItems = UIStoryboard(name: PaymentItemsViewController.className, bundle: nil).instantiateInitialViewController() as! PaymentItemsViewController
-        _ = paymentItems.view
-        let paymentItemsInput = PaymentItemsViewModel.Input(itemSelected: paymentItems.tableView.rx.itemSelected,
-                                                            itemDeleted: paymentItems.tableView.rx.itemDeleted)
-        let paymentItemsDependency = PaymentItemsViewModel.Dependency(wireframe: paymentItems,
-                                                                      paymentService: dependency.paymentService)
-        let paymentItemsViewModel = PaymentItemsViewModel(input: paymentItemsInput,
-                                                          dependency: paymentItemsDependency)
-        paymentItems.bind(paymentItemsViewModel)
-        self.input.paymentItemDeleted = paymentItems.tableView.rx.itemDeleted
-        
-        let lineGraphViewModel = LineGraphViewModel(paymentService: dependency.paymentService)
-        let lineGraph = UIStoryboard(name: LineGraphViewController.className, bundle: nil).instantiateInitialViewController() as! LineGraphViewController
-        _ = lineGraph.view
-        lineGraph.bind(lineGraphViewModel)
-        
-        let paymentItemViewControllers = [paymentItems, lineGraph]
-        self.paymentItemViewControllers = paymentItemViewControllers
-        
         let paymentItemPageViewController = Observable.combineLatest(
                 input.didChangePaymentItemSegmentControlValue,
                 input.didChangePaymentItemSegmentControlValue
             )
             .map { index, previous -> (UIViewController, UIPageViewController.NavigationDirection)? in
-                guard let view = paymentItemViewControllers[safe: index] else {
+                guard let view = dependency.paymentItemViewControllers[safe: index] else {
                     return nil
                 }
                 let direction: UIPageViewController.NavigationDirection = index - previous > 0 ? .forward : .reverse
@@ -158,7 +138,7 @@ class HouseholdViewModel: NSObject {
         self.input.didChangeItemPageView
             .distinctUntilChanged()
             .map { [weak self] in
-                self?.paymentItemViewControllers.firstIndex(of: $0)
+                self?.dependency.paymentItemViewControllers.firstIndex(of: $0)
             }
             .filterNil()
             .bind(to: _paymentItemSegmentControlValue)

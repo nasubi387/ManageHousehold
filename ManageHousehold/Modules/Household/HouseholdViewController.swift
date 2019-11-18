@@ -10,10 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol HouseholdFireframe {
-    func presentInputPaymentView(with paymentItem: PaymentItem)
-}
-
 class HouseholdViewController: UIViewController {
     var viewModel: HouseholdViewModel!
     let disposeBag = DisposeBag()
@@ -41,7 +37,6 @@ class HouseholdViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
 }
 
@@ -58,30 +53,12 @@ extension HouseholdViewController {
         }
         headerView = CalenderHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         navigationItem.titleView = headerView
-        
-        let year = Calendar.current.component(.year, from: Date())
-        let month = Calendar.current.component(.month, from: Date())
-        
-        bind(year: year, month: month)
-        
-        pageView.dataSource = viewModel
     }
     
-    func bind(year: Int, month: Int) {
-        let paymentService = PaymentService(year: year, month: month)
-        
-        let input = HouseholdViewModel.Input(viewDidAppear: self.rx.viewDidAppear,
-                                             didChangePageView: pageView.rx.didChangePage,
-                                             didChangeItemPageView: paymentItemPageView.rx.didChangePage,
-                                             didTapAddButton: addButton.rx.tap.asSignal(),
-                                             didChangePaymentItemSegmentControlValue: paymentItemSegmentControl.rx.value)
-        
-        let dependency = HouseholdViewModel.Dependency(wireframe: self,
-                                                       paymentService: BehaviorRelay<PaymentService>(value: paymentService))
-        
-        let viewModel = HouseholdViewModel(input:input, dependency: dependency)
+    func bind(_ viewModel: HouseholdViewModel) {
         
         self.viewModel = viewModel
+        pageView.dataSource = viewModel
         
         viewModel.output.incomeText
             .bind(to: incomeLabel.rx.text)
@@ -112,17 +89,5 @@ extension HouseholdViewController {
                 self?.pageView.setViewControllers($0, direction: .forward, animated: false)
             }
             .disposed(by: disposeBag)
-    }
-}
-
-extension HouseholdViewController: HouseholdFireframe {
-    func presentInputPaymentView(with paymentItem: PaymentItem) {
-        guard let navigationController = UIStoryboard(name: InputPaymentViewController.className, bundle: nil).instantiateInitialViewController() as? UINavigationController,
-            let view = navigationController.viewControllers.first as? InputPaymentViewController else {
-            return
-        }
-        let viewModel = InputPaymentViewModel(paymentItem: paymentItem)
-        view.bind(viewModel)
-        present(navigationController, animated: true)
     }
 }

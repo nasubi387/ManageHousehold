@@ -12,7 +12,7 @@ import UIKit
 
 class CalenderViewModel {
     struct Dependency {
-        let wireframe: CalenderFireframe
+        let wireframe: CalenderWireframe
         let paymentService: BehaviorRelay<PaymentService>
     }
     

@@ -51,6 +51,9 @@
 		2CA5738B237E96E200A92A5B /* GraphXAxisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA57389237E96E200A92A5B /* GraphXAxisCell.swift */; };
 		2CA5738C237E96E200A92A5B /* GraphXAxisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA5738A237E96E200A92A5B /* GraphXAxisCell.xib */; };
 		2CA5738E238147F000A92A5B /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA5738D238147F000A92A5B /* UIViewController+Rx.swift */; };
+		2CA573902382D07E00A92A5B /* HouseholdWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA5738F2382D07E00A92A5B /* HouseholdWireframe.swift */; };
+		2CA573922382D96000A92A5B /* PaymentItemsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA573912382D96000A92A5B /* PaymentItemsWireframe.swift */; };
+		2CA573942382F22E00A92A5B /* LineGraphWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA573932382F22E00A92A5B /* LineGraphWireframe.swift */; };
 		2CC45C5C236EDE20008CE1F9 /* UITableViewCell+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */; };
 		2CC45C5E236FE46C008CE1F9 /* PaymentItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */; };
 		2CC45C60236FE4E9008CE1F9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */; };
@@ -160,6 +163,9 @@
 		2CA57389237E96E200A92A5B /* GraphXAxisCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphXAxisCell.swift; sourceTree = "<group>"; };
 		2CA5738A237E96E200A92A5B /* GraphXAxisCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphXAxisCell.xib; sourceTree = "<group>"; };
 		2CA5738D238147F000A92A5B /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		2CA5738F2382D07E00A92A5B /* HouseholdWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseholdWireframe.swift; sourceTree = "<group>"; };
+		2CA573912382D96000A92A5B /* PaymentItemsWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemsWireframe.swift; sourceTree = "<group>"; };
+		2CA573932382F22E00A92A5B /* LineGraphWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphWireframe.swift; sourceTree = "<group>"; };
 		2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+App.swift"; sourceTree = "<group>"; };
 		2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemRepository.swift; sourceTree = "<group>"; };
 		2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				2C12D04E2377F58C0083D828 /* PaymentItemsViewController.storyboard */,
 				2C12D0502377F5A00083D828 /* PaymentItemsViewController.swift */,
 				2C12D0522377F5ED0083D828 /* PaymentItemsViewModel.swift */,
+				2CA573912382D96000A92A5B /* PaymentItemsWireframe.swift */,
 				2CC45C63237055B5008CE1F9 /* PaymentItemCell */,
 			);
 			path = PaymentItems;
@@ -330,6 +337,7 @@
 				2C97243E23641BEC00AA94F0 /* CalenderHeaderView.swift */,
 				2C97244023641CEB00AA94F0 /* CalenderHeaderView.xib */,
 				2C12D054237809400083D828 /* PaymentService.swift */,
+				2CA5738F2382D07E00A92A5B /* HouseholdWireframe.swift */,
 			);
 			path = Household;
 			sourceTree = "<group>";
@@ -406,6 +414,7 @@
 				2CA57387237E8DFA00A92A5B /* GraphView.xib */,
 				2CA57389237E96E200A92A5B /* GraphXAxisCell.swift */,
 				2CA5738A237E96E200A92A5B /* GraphXAxisCell.xib */,
+				2CA573932382F22E00A92A5B /* LineGraphWireframe.swift */,
 			);
 			path = LineGraph;
 			sourceTree = "<group>";
@@ -625,6 +634,8 @@
 				2CDC9C2D236D55DC00C3E6C5 /* InputPaymentCellViewModel.swift in Sources */,
 				2C9BAAC02344E3F5003C9A1D /* PaymentRepository.swift in Sources */,
 				2C972429235CABF500AA94F0 /* CalenderViewController.swift in Sources */,
+				2CA573922382D96000A92A5B /* PaymentItemsWireframe.swift in Sources */,
+				2CA573902382D07E00A92A5B /* HouseholdWireframe.swift in Sources */,
 				2CA5738B237E96E200A92A5B /* GraphXAxisCell.swift in Sources */,
 				2C972430235CAE9500AA94F0 /* Array+App.swift in Sources */,
 				2CC45C66237055D8008CE1F9 /* PaymentItemTableViewCell.swift in Sources */,
@@ -633,6 +644,7 @@
 				2C97243F23641BEC00AA94F0 /* CalenderHeaderView.swift in Sources */,
 				2CDC9C24236D49D300C3E6C5 /* InputPaymentSectionType.swift in Sources */,
 				2C9BAAB323425851003C9A1D /* HouseholdViewModel.swift in Sources */,
+				2CA573942382F22E00A92A5B /* LineGraphWireframe.swift in Sources */,
 				2C9BAAB62344DD05003C9A1D /* CalenderCell.swift in Sources */,
 				2C12D0512377F5A00083D828 /* PaymentItemsViewController.swift in Sources */,
 				2CC45C6E23718D95008CE1F9 /* WeekdayCell.swift in Sources */,
