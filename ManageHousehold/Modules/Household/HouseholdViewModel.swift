@@ -40,8 +40,6 @@ class HouseholdViewModel: NSObject {
     
     private let disposeBag = DisposeBag()
     
-    private let _paymentItemsViewModel: BehaviorRelay<PaymentItemsViewModel>
-    private let _lineGraphViewModel: BehaviorRelay<LineGraphViewModel>
     private let _paymentItemSegmentControlValue: BehaviorRelay<Int>
     private let _initialCalender: BehaviorRelay<[CalenderViewController]>
     
@@ -50,8 +48,6 @@ class HouseholdViewModel: NSObject {
         let year: Int
         let month: Int
         let dayCount: Int
-        let paymentItemsViewModel: PaymentItemsViewModel
-        let lineGraphViewModel: LineGraphViewModel
         let paymentService: PaymentService
     }
     
@@ -60,8 +56,6 @@ class HouseholdViewModel: NSObject {
                      year: dependency.paymentService.value.currentState.year,
                      month: dependency.paymentService.value.currentState.month,
                      dayCount: dependency.paymentService.value.currentState.dayCount,
-                     paymentItemsViewModel: _paymentItemsViewModel.value,
-                     lineGraphViewModel: _lineGraphViewModel.value,
                      paymentService: dependency.paymentService.value)
     }
     
@@ -70,12 +64,6 @@ class HouseholdViewModel: NSObject {
     init(input: Input, dependency: Dependency) {
         self.dependency = dependency
         self.input = input
-        
-        let paymentItemsViewModel = PaymentItemsViewModel(paymentService: dependency.paymentService)
-        _paymentItemsViewModel = BehaviorRelay<PaymentItemsViewModel>(value: paymentItemsViewModel)
-        
-        let lineGraphViewModel = LineGraphViewModel(paymentService: dependency.paymentService)
-        _lineGraphViewModel = BehaviorRelay<LineGraphViewModel>(value: lineGraphViewModel)
         
         _initialCalender = BehaviorRelay<[CalenderViewController]>(value: [])
         _paymentItemSegmentControlValue = BehaviorRelay<Int>(value: 0)
@@ -105,9 +93,16 @@ class HouseholdViewModel: NSObject {
         
         let paymentItems = UIStoryboard(name: PaymentItemsViewController.className, bundle: nil).instantiateInitialViewController() as! PaymentItemsViewController
         _ = paymentItems.view
+        let paymentItemsInput = PaymentItemsViewModel.Input(itemSelected: paymentItems.tableView.rx.itemSelected,
+                                                            itemDeleted: paymentItems.tableView.rx.itemDeleted)
+        let paymentItemsDependency = PaymentItemsViewModel.Dependency(wireframe: paymentItems,
+                                                                      paymentService: dependency.paymentService)
+        let paymentItemsViewModel = PaymentItemsViewModel(input: paymentItemsInput,
+                                                          dependency: paymentItemsDependency)
         paymentItems.bind(paymentItemsViewModel)
         self.input.paymentItemDeleted = paymentItems.tableView.rx.itemDeleted
         
+        let lineGraphViewModel = LineGraphViewModel(paymentService: dependency.paymentService)
         let lineGraph = UIStoryboard(name: LineGraphViewController.className, bundle: nil).instantiateInitialViewController() as! LineGraphViewController
         _ = lineGraph.view
         lineGraph.bind(lineGraphViewModel)
@@ -200,6 +195,7 @@ class HouseholdViewModel: NSObject {
         let viewModel = CalenderViewModel(input: input,
                                           dependency: dependency)
         view.bind(viewModel)
+        
         viewModel.output.itemSelected
             .subscribe(onNext:{ [weak self] in
                 self?.dependency.wireframe.presentInputPaymentView(with: $0)

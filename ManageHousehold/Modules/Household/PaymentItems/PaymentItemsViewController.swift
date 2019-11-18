@@ -10,6 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol PaymentItemsWireFrame {
+    func presentInputPaymentView(with paymentItem: PaymentItem)
+}
+
 class PaymentItemsViewController: UIViewController {
     var viewModel: PaymentItemsViewModel!
     let disposeBag = DisposeBag()
@@ -30,22 +34,14 @@ extension PaymentItemsViewController {
     
     func bind(_ viewModel: PaymentItemsViewModel) {
         self.viewModel = viewModel
-        tableView.rx.itemDeleted
-            .subscribe(onNext: { [weak self] indexPath in
-                self?.viewModel.delete(at: indexPath)
+        
+        viewModel.output.itemSelected
+            .subscribe(onNext: { [weak self] in
+                self?.tableView.deselectRow(at: $0, animated: true)
             })
             .disposed(by: disposeBag)
-        tableView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                self?.tableView.deselectRow(at: indexPath, animated: true)
-                let payment = self?.viewModel.currentStatus.sectionModels[indexPath.section].currentStatus.payment
-                guard let paymentItem = payment?.paymentItems[indexPath.row] else {
-                    return
-                }
-                self?.presentInputPaymentView(with: paymentItem)
-            })
-            .disposed(by: disposeBag)
-        viewModel.sectionModels
+        
+        viewModel.output.sectionModels
             .subscribe(onNext: { [weak self] _ in
                 self?.tableView.reloadData()
             })
@@ -53,8 +49,8 @@ extension PaymentItemsViewController {
     }
 }
 
-extension PaymentItemsViewController {
-    private func presentInputPaymentView(with paymentItem: PaymentItem) {
+extension PaymentItemsViewController: PaymentItemsWireFrame {
+    func presentInputPaymentView(with paymentItem: PaymentItem) {
         guard let navigationController = UIStoryboard(name: InputPaymentViewController.className, bundle: nil).instantiateInitialViewController() as? UINavigationController,
             let view = navigationController.viewControllers.first as? InputPaymentViewController else {
             return

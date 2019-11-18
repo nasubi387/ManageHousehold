@@ -36,10 +36,6 @@ class CalenderViewModel {
     
     private let _cellModels: BehaviorRelay<[CalenderCellViewModel]>
     
-    var cellModels: Observable<[CalenderCellViewModel]> {
-        return _cellModels.asObservable()
-    }
-    
     struct State {
         let cellModels: [CalenderCellViewModel]
         let paymentService: PaymentService

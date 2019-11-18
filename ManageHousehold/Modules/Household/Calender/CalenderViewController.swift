@@ -41,7 +41,7 @@ extension CalenderViewController {
     
     func bind(_ viewModel: CalenderViewModel) {
         self.viewModel = viewModel
-        viewModel.cellModels
+        viewModel.output.cellModels
             .subscribe(onNext: { [weak self] _ in
                 self?.collectionView.reloadData()
             })
