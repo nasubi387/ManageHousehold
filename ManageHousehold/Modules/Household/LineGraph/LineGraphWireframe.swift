@@ -29,7 +29,7 @@ class LineGraphWireframe: LineGraphWireframeInput {
         
         let wireframe = LineGraphWireframe(view: view)
         let dependency = LineGraphViewModel.Dependency(wireframe: wireframe,
-                                                          paymentService: paymentService)
+                                                       paymentService: paymentService)
         let input = LineGraphViewModel.Input()
         let viewModel = LineGraphViewModel(input: input, dependency: dependency)
         view.bind(viewModel)

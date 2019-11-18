@@ -10,10 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol CalenderWireframe {
-    
-}
-
 class CalenderViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -47,10 +43,6 @@ extension CalenderViewController {
             })
             .disposed(by: disposeBag)
     }
-}
-
-extension CalenderViewController: CalenderWireframe {
-    
 }
 
 extension CalenderViewController: UICollectionViewDataSource {

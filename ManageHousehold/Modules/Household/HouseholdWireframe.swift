@@ -50,8 +50,9 @@ class HouseholdWireframe: HouseholdWireframeInput {
         let dependency = HouseholdViewModel.Dependency(wireframe: wireframe,
                                                        paymentService: paymenrServiceObserver,
                                                        paymentItemViewControllers: [paymentItemsView, lineGraph])
-        let viewModel = HouseholdViewModel(input: input,
-                                           dependency: dependency)
+        guard let viewModel = HouseholdViewModel(input: input, dependency: dependency) else {
+            return nil
+        }
         view.bind(viewModel)
         
         return navigationController
@@ -65,5 +66,10 @@ class HouseholdWireframe: HouseholdWireframeInput {
         let viewModel = InputPaymentViewModel(paymentItem: paymentItem)
         view.bind(viewModel)
         self.view.present(navigationController, animated: true)
+    }
+    
+    func calenderView(year: Int, month: Int) -> CalenderViewController? {
+        let paymentService = PaymentService(year: year, month: month)
+        return CalenderWireframe.assembleModules(BehaviorRelay<PaymentService>(value: paymentService), parentInput: view.viewModel.input)
     }
 }
