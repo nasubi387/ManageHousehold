@@ -134,6 +134,18 @@ class HouseholdViewModel: NSObject {
             .bind(to: dependency.paymentService)
             .disposed(by: disposeBag)
         
+        self.input.didChangePageView
+            .map { $0 as? CalenderViewController }
+            .filterNil()
+            .subscribe(onNext: { [weak self] view in
+                view.viewModel.output.itemSelected
+                    .subscribe(onNext:{ [weak self] in
+                        self?.dependency.wireframe.presentInputPaymentView(with: $0)
+                    })
+                    .disposed(by: view.disposeBag)
+            })
+            .disposed(by: disposeBag)
+        
         // ItemPageView
         self.input.didChangeItemPageView
             .distinctUntilChanged()
@@ -175,12 +187,6 @@ class HouseholdViewModel: NSObject {
         let viewModel = CalenderViewModel(input: input,
                                           dependency: dependency)
         view.bind(viewModel)
-        
-        viewModel.output.itemSelected
-            .subscribe(onNext:{ [weak self] in
-                self?.dependency.wireframe.presentInputPaymentView(with: $0)
-            })
-            .disposed(by: view.disposeBag)
         
         return view
     }
