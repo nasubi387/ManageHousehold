@@ -64,12 +64,7 @@ extension HouseholdViewController {
         
         bind(year: year, month: month)
         
-        guard let view = getCalenderViewController(year: year, month: month) else {
-            return
-        }
-        viewModel.update(view.viewModel)
-        pageView.dataSource = self
-        pageView.setViewControllers([view], direction: .forward, animated: false)
+        pageView.dataSource = viewModel
     }
     
     func bind(year: Int, month: Int) {
@@ -111,34 +106,12 @@ extension HouseholdViewController {
                                                              animated: true)
             }
             .disposed(by: disposeBag)
-    }
-}
-
-extension HouseholdViewController {
-    private func getCalenderViewController(year: Int, month: Int) -> CalenderViewController? {
-        guard let view = UIStoryboard(name: CalenderViewController.className, bundle: nil).instantiateInitialViewController() as? CalenderViewController else {
-            return nil
-        }
-        _ = view.view
-        view.page.year = year
-        view.page.month = month
-        let paymentService = PaymentService(year: year, month: month)
-        let viewModel = CalenderViewModel(paymentService: paymentService)
-        view.bind(viewModel)
-        view.rx.itemSelected
-            .bind{ [weak self] date in
-                guard let self = self else { return }
-                
-                let calendar = Calendar.current
-                guard calendar.component(.year, from: date) == self.viewModel.currentStatus.year
-                    && calendar.component(.month, from: date) == self.viewModel.currentStatus.month else {
-                    return
-                }
-                let paymentItem = PaymentItem(date: date)
-                self.presentInputPaymentView(with: paymentItem)
+        
+        viewModel.output.initialCalender
+            .bind { [weak self] in
+                self?.pageView.setViewControllers($0, direction: .forward, animated: false)
             }
-            .disposed(by: view.disposeBag)
-        return view
+            .disposed(by: disposeBag)
     }
 }
 
@@ -151,21 +124,5 @@ extension HouseholdViewController: HouseholdFireframe {
         let viewModel = InputPaymentViewModel(paymentItem: paymentItem)
         view.bind(viewModel)
         present(navigationController, animated: true)
-    }
-}
-
-extension HouseholdViewController: UIPageViewControllerDataSource {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard pageViewController == pageView else {
-            return nil
-        }
-        return getCalenderViewController(year: viewModel.currentStatus.year, month: viewModel.currentStatus.month - 1)
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard pageViewController == pageView else {
-            return nil
-        }
-        return getCalenderViewController(year: viewModel.currentStatus.year, month: viewModel.currentStatus.month + 1)
     }
 }

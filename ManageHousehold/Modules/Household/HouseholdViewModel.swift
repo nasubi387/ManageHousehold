@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-class HouseholdViewModel {
+class HouseholdViewModel: NSObject {
     struct Dependency {
         let wireframe: HouseholdFireframe
         let paymentService: BehaviorRelay<PaymentService>
@@ -22,6 +22,7 @@ class HouseholdViewModel {
         let didChangeItemPageView: Observable<UIViewController>
         let didTapAddButton: Signal<Void>
         let didChangePaymentItemSegmentControlValue: ControlProperty<Int>
+        var paymentItemDeleted: ControlEvent<IndexPath>!
     }
     
     struct Output {
@@ -30,18 +31,19 @@ class HouseholdViewModel {
         let expenseText: Observable<String>
         let totalText: Observable<String>
         let paymentItemPageViewController: Observable<(UIViewController,UIPageViewController.NavigationDirection)>
+        let initialCalender: Observable<[CalenderViewController]>
     }
     
     private let dependency: Dependency
-    private let input: Input
+    private var input: Input
     let output: Output
     
     private let disposeBag = DisposeBag()
     
-    private let _calenderViewModel: BehaviorRelay<CalenderViewModel?>
     private let _paymentItemsViewModel: BehaviorRelay<PaymentItemsViewModel>
     private let _lineGraphViewModel: BehaviorRelay<LineGraphViewModel>
     private let _paymentItemSegmentControlValue: BehaviorRelay<Int>
+    private let _initialCalender: BehaviorRelay<[CalenderViewController]>
     
     struct State {
         let payments: [Payment]
@@ -67,6 +69,7 @@ class HouseholdViewModel {
     
     init(input: Input, dependency: Dependency) {
         self.dependency = dependency
+        self.input = input
         
         let paymentItemsViewModel = PaymentItemsViewModel(paymentService: dependency.paymentService)
         _paymentItemsViewModel = BehaviorRelay<PaymentItemsViewModel>(value: paymentItemsViewModel)
@@ -74,12 +77,8 @@ class HouseholdViewModel {
         let lineGraphViewModel = LineGraphViewModel(paymentService: dependency.paymentService)
         _lineGraphViewModel = BehaviorRelay<LineGraphViewModel>(value: lineGraphViewModel)
         
-        _calenderViewModel = BehaviorRelay<CalenderViewModel?>(value: nil)
-        _calenderViewModel
-            .filterNil()
-            .map { $0.currentStatus.paymentService }
-            .bind(to: dependency.paymentService)
-            .disposed(by: disposeBag)
+        _initialCalender = BehaviorRelay<[CalenderViewController]>(value: [])
+        _paymentItemSegmentControlValue = BehaviorRelay<Int>(value: 0)
         
         // output
         let calenderTitleText = dependency.paymentService
@@ -107,6 +106,7 @@ class HouseholdViewModel {
         let paymentItems = UIStoryboard(name: PaymentItemsViewController.className, bundle: nil).instantiateInitialViewController() as! PaymentItemsViewController
         _ = paymentItems.view
         paymentItems.bind(paymentItemsViewModel)
+        self.input.paymentItemDeleted = paymentItems.tableView.rx.itemDeleted
         
         let lineGraph = UIStoryboard(name: LineGraphViewController.className, bundle: nil).instantiateInitialViewController() as! LineGraphViewController
         _ = lineGraph.view
@@ -128,34 +128,39 @@ class HouseholdViewModel {
             }
             .filterNil()
         
-        _paymentItemSegmentControlValue = BehaviorRelay<Int>(value: 0)
+        let initialCalender = _initialCalender.asObservable()
         
         output = Output(calenderTitleText: calenderTitleText,
                         incomeText: incomeText,
                         expenseText: expenseText,
                         totalText: totalText,
-                        paymentItemPageViewController: paymentItemPageViewController)
+                        paymentItemPageViewController: paymentItemPageViewController,
+                        initialCalender: initialCalender)
         
-        self.input = input
-        
+        super.init()
         // viewDidAppear
-        input.viewDidAppear
+        self.input.viewDidAppear
+            .subscribe(onNext: { [weak self] _ in
+                self?.fetchPayments()
+            })
+            .disposed(by: disposeBag)
+        
+        // itemDeleted
+        self.input.paymentItemDeleted
             .subscribe(onNext: { [weak self] _ in
                 self?.fetchPayments()
             })
             .disposed(by: disposeBag)
         
         // PageView
-        input.didChangePageView
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] nextView in
-                guard let viewModel = (nextView as? CalenderViewController)?.viewModel else { return }
-                self?.update(viewModel)
-            })
+        self.input.didChangePageView
+            .map { ($0 as? CalenderViewController)?.viewModel.currentStatus.paymentService }
+            .filterNil()
+            .bind(to: dependency.paymentService)
             .disposed(by: disposeBag)
         
         // ItemPageView
-        input.didChangeItemPageView
+        self.input.didChangeItemPageView
             .distinctUntilChanged()
             .map { [weak self] in
                 self?.paymentItemViewControllers.firstIndex(of: $0)
@@ -165,21 +170,52 @@ class HouseholdViewModel {
             .disposed(by: disposeBag)
         
         // AddButton
-        input.didTapAddButton
+        self.input.didTapAddButton
             .emit(onNext: {
                 let paymentItem = PaymentItem(date: Date())
                 dependency.wireframe.presentInputPaymentView(with: paymentItem)
             })
             .disposed(by: disposeBag)
-    }
-    
-    func update(_ calenderViewModel: CalenderViewModel) {
-        calenderViewModel.fetchPayments()
-        _calenderViewModel.accept(calenderViewModel)
+        
+        guard let initialCalenderViewController = getCalenderViewController(year: currentStatus.year, month: currentStatus.month) else { return }
+        _initialCalender.accept([initialCalenderViewController])
     }
     
     private func fetchPayments() {
         dependency.paymentService.value.fetchPayments()
-        _calenderViewModel.value?.fetchPayments()
+    }
+    
+    private func getCalenderViewController(year: Int, month: Int) -> CalenderViewController? {
+        guard let view = UIStoryboard(name: CalenderViewController.className, bundle: nil).instantiateInitialViewController() as? CalenderViewController else {
+            return nil
+        }
+        _ = view.view
+        
+        let paymentService = PaymentService(year: year, month: month)
+        let input = CalenderViewModel.Input(viewDidAppear: self.input.viewDidAppear,
+                                            itemSelected: view.rx.itemSelected,
+                                            paymentItemDeleted: self.input.paymentItemDeleted)
+        let dependency = CalenderViewModel.Dependency(wireframe: view,
+                                                      paymentService: BehaviorRelay<PaymentService>(value: paymentService))
+        let viewModel = CalenderViewModel(input: input,
+                                          dependency: dependency)
+        view.bind(viewModel)
+        viewModel.output.itemSelected
+            .subscribe(onNext:{ [weak self] in
+                self?.dependency.wireframe.presentInputPaymentView(with: $0)
+            })
+            .disposed(by: view.disposeBag)
+        
+        return view
+    }
+}
+
+extension HouseholdViewModel: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        return getCalenderViewController(year: currentStatus.year, month: currentStatus.month - 1)
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        return getCalenderViewController(year: currentStatus.year, month: currentStatus.month + 1)
     }
 }

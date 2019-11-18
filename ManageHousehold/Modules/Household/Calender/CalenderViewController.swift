@@ -10,13 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol CalenderFireframe {
+    
+}
+
 class CalenderViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var viewModel: CalenderViewModel!
     let disposeBag = DisposeBag()
-    
-    var page: (year: Int, month: Int) = (year: 0, month: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,10 @@ extension CalenderViewController {
             })
             .disposed(by: disposeBag)
     }
+}
+
+extension CalenderViewController: CalenderFireframe {
+    
 }
 
 extension CalenderViewController: UICollectionViewDataSource {
