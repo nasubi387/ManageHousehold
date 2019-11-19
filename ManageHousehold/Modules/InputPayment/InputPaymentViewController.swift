@@ -17,6 +17,7 @@ class InputPaymentViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var paymentSegmentControl: UISegmentedControl!
     @IBOutlet weak var saveButton: UIButton!
+    var tapGesture: UITapGestureRecognizer!
     
     var closeButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_close_black_36pt_1x"),
                                                        style: .plain,
@@ -53,40 +54,35 @@ extension InputPaymentViewController {
             tableView.backgroundColor = UIColor.systemGroupedBackground
         }
         tableView.dataSource = self
+        
         closeButton.tintColor = UIColor.systemGray
+        
         navigationItem.rightBarButtonItems = [closeButton]
+        
+        tapGesture = UITapGestureRecognizer()
+        view.addGestureRecognizer(tapGesture)
     }
     
     func bind(_ viewModel: InputPaymentViewModel) {
         self.viewModel = viewModel
-        let gesture = UITapGestureRecognizer()
-        view.addGestureRecognizer(gesture)
-        gesture.rx.event.asDriver()
-            .drive(onNext: { [weak self] event in
-                self?.view.endEditing(true)
-            })
+        
+        viewModel.output.dismissKeybord
+            .bind { [weak self] in
+                self?.view.endEditing($0)
+            }
             .disposed(by: disposeBag)
-        paymentSegmentControl.rx.value.asDriver()
-            .skip(1)
-            .drive(onNext: {
-                viewModel.didChange($0)
-            })
+        
+        viewModel.output.dismissView
+            .bind { [weak self] in
+                self?.dismiss(animated: $0)
+            }
             .disposed(by: disposeBag)
-        closeButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true)
-            })
-            .disposed(by: disposeBag)
-        saveButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.writePaymentItem()
-                self?.dismiss(animated: true)
-            })
-            .disposed(by: disposeBag)
-        viewModel.segmentControl
+        
+        viewModel.output.segmentControl
             .bind(to: paymentSegmentControl.rx.value)
             .disposed(by: disposeBag)
-        viewModel.paymentItem
+        
+        viewModel.output.paymentItem
             .distinctUntilChanged()
             .bind { [weak self] in
                 self?.viewModel.didChange($0)

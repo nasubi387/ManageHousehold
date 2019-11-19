@@ -59,13 +59,10 @@ class HouseholdWireframe: HouseholdWireframeInput {
     }
     
     func presentInputPaymentView(with paymentItem: PaymentItem) {
-        guard let navigationController = UIStoryboard(name: InputPaymentViewController.className, bundle: nil).instantiateInitialViewController() as? UINavigationController,
-            let view = navigationController.viewControllers.first as? InputPaymentViewController else {
+        guard let inputPaymentView = InputPaymentWireframe.assembleModules(paymentItem) else {
             return
         }
-        let viewModel = InputPaymentViewModel(paymentItem: paymentItem)
-        view.bind(viewModel)
-        self.view.present(navigationController, animated: true)
+        self.view.present(inputPaymentView, animated: true)
     }
     
     func calenderView(year: Int, month: Int) -> CalenderViewController? {

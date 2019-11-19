@@ -25,27 +25,28 @@ class CalenderCell: UICollectionViewCell {
 
     func bind(_ viewModel: CalenderCellViewModel) {
         self.viewModel = viewModel
-        viewModel.dayText
+        
+        viewModel.output.dayText
             .bind(to: dateLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.expenseText
+        viewModel.output.expenseText
             .bind(to: expenseLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.incomeText
+        viewModel.output.incomeText
             .bind(to: incomeLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.isHiddenExpense
+        viewModel.output.isHiddenExpense
             .bind(to: expenseLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
-        viewModel.isHiddenIncome
+        viewModel.output.isHiddenIncome
             .bind(to: incomeLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
-        viewModel.backgroundColor
+        viewModel.output.backgroundColor
             .bind(to: self.rx.backgroundColor)
             .disposed(by: disposeBag)
     }

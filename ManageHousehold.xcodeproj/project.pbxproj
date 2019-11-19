@@ -55,6 +55,7 @@
 		2CA573922382D96000A92A5B /* PaymentItemsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA573912382D96000A92A5B /* PaymentItemsWireframe.swift */; };
 		2CA573942382F22E00A92A5B /* LineGraphWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA573932382F22E00A92A5B /* LineGraphWireframe.swift */; };
 		2CA573962382FA2E00A92A5B /* CalenderWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA573952382FA2E00A92A5B /* CalenderWireframe.swift */; };
+		2CA5739A2384154100A92A5B /* InputPaymentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA573992384154100A92A5B /* InputPaymentWireframe.swift */; };
 		2CC45C5C236EDE20008CE1F9 /* UITableViewCell+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */; };
 		2CC45C5E236FE46C008CE1F9 /* PaymentItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */; };
 		2CC45C60236FE4E9008CE1F9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */; };
@@ -168,6 +169,7 @@
 		2CA573912382D96000A92A5B /* PaymentItemsWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemsWireframe.swift; sourceTree = "<group>"; };
 		2CA573932382F22E00A92A5B /* LineGraphWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphWireframe.swift; sourceTree = "<group>"; };
 		2CA573952382FA2E00A92A5B /* CalenderWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderWireframe.swift; sourceTree = "<group>"; };
+		2CA573992384154100A92A5B /* InputPaymentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPaymentWireframe.swift; sourceTree = "<group>"; };
 		2CC45C5B236EDE20008CE1F9 /* UITableViewCell+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+App.swift"; sourceTree = "<group>"; };
 		2CC45C5D236FE46C008CE1F9 /* PaymentItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentItemRepository.swift; sourceTree = "<group>"; };
 		2CC45C5F236FE4E9008CE1F9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				2CDC9C152365746F00C3E6C5 /* InputPaymentViewController.storyboard */,
 				2CDC9C172365747F00C3E6C5 /* InputPaymentViewController.swift */,
 				2CDC9C192365831A00C3E6C5 /* InputPaymentViewModel.swift */,
+				2CA573992384154100A92A5B /* InputPaymentWireframe.swift */,
 			);
 			path = InputPayment;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				2CC45C5E236FE46C008CE1F9 /* PaymentItemRepository.swift in Sources */,
 				2C972433235EE9FE00AA94F0 /* ViewModelType.swift in Sources */,
 				2CA57386237D86AC00A92A5B /* GraphView.swift in Sources */,
+				2CA5739A2384154100A92A5B /* InputPaymentWireframe.swift in Sources */,
 				2CDC9C2B236D541500C3E6C5 /* UITableView+App.swift in Sources */,
 				2CDC9C22236D497D00C3E6C5 /* InputPaymentCellType.swift in Sources */,
 				2CA57382237D7BFB00A92A5B /* LineGraphViewController.swift in Sources */,

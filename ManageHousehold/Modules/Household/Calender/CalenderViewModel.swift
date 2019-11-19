@@ -74,7 +74,10 @@ class CalenderViewModel {
                     let isDummy =
                         self?.currentStatus.paymentService.currentState.year != year ||
                         self?.currentStatus.paymentService.currentState.month != month
-                    return CalenderCellViewModel(payment: $0, isDummy: isDummy)
+                    return CalenderCellViewModel(input: CalenderCellViewModel.Input(),
+                                                 dependency: CalenderCellViewModel.Dependency(),
+                                                 payment: $0,
+                                                 isDummy: isDummy)
                 }
             }
             .bind(to: _cellModels)
@@ -95,11 +98,7 @@ class CalenderViewModel {
         fetchPayments()
     }
     
-    func fetchPayments() {
+    private func fetchPayments() {
         dependency.paymentService.value.fetchPayments()
-    }
-    
-    func updatePayment(_ payment: Payment) {
-        dependency.paymentService.value.updatePayment(payment)
     }
 }

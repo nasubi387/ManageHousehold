@@ -49,18 +49,6 @@ extension PaymentItemsViewController {
     }
 }
 
-extension PaymentItemsViewController: PaymentItemsWireFrame {
-    func presentInputPaymentView(with paymentItem: PaymentItem) {
-        guard let navigationController = UIStoryboard(name: InputPaymentViewController.className, bundle: nil).instantiateInitialViewController() as? UINavigationController,
-            let view = navigationController.viewControllers.first as? InputPaymentViewController else {
-            return
-        }
-        let viewModel = InputPaymentViewModel(paymentItem: paymentItem)
-        view.bind(viewModel)
-        present(navigationController, animated: true)
-    }
-}
-
 extension PaymentItemsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.currentStatus.sectionModels.count
